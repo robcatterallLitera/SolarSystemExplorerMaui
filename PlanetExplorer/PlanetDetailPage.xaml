@@ -1,0 +1,36 @@
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlanetExplorer.PlanetDetailPage"
+             Title="{Binding Name}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Image Source="{Binding ImageUrl}" HeightRequest="200" Aspect="AspectFill" />
+            
+            <Label Text="{Binding Name}" FontSize="32" FontAttributes="Bold" Margin="0,20,0,10" />
+            <Label Text="{Binding Description}" FontSize="16" Margin="0,0,0,20" />
+            
+            <Frame BorderColor="LightGray" Padding="10" Margin="0,0,0,20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Planet Details" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="{Binding Diameter, StringFormat='Diameter: {0} km'}" />
+                    <Label Text="{Binding DistanceFromSun, StringFormat='Distance from Sun: {0} million km'}" />
+                    <Label Text="{Binding OrbitalPeriod, StringFormat='Orbital Period: {0} Earth days'}" />
+                </VerticalStackLayout>
+            </Frame>
+            
+            <Label Text="Interesting Facts" FontSize="20" FontAttributes="Bold" Margin="0,0,0,10" />
+            <CollectionView ItemsSource="{Binding Facts}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="LightGray">
+                            <Label Text="{Binding}" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
